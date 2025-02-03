@@ -1,27 +1,33 @@
 # Car Listings Search App
 
-This project is a React application that lets users search for car listings from various online marketplaces in Ethiopia, including [Mekina.net](https://www.mekina.net) and [Jiji.com.et](https://jiji.com.et). The app interacts with the Car Listings API to fetch and display car details with various filters.
+This project is a React application that lets users search for car listings from two popular online marketplaces in Ethiopia, **Mekina.net** and **Jiji.com.et**, by scraping the sites directly. The app fetches and displays car details such as title, price, image, and location with various filters.
 
 ## Features
 
-- Search for car listings from **Mekina.net** and **Jiji.com.et**.
+- Scrapes car listings from **Mekina.net** and **Jiji.com.et**.
+- Allows users to search for cars based on a query (e.g., model, brand).
 - Apply filters based on **brand**, **price range**, and **location**.
 - Toggle between **light** and **dark modes**.
-- View detailed car listings with options to visit the original listings.
-- Cache search results for faster re-access.
+- View detailed car listings with options to visit the original listing pages.
+- Caches search results for faster access on repeated searches.
 
 ## Requirements
 
-Ensure you have the following installed before setting up the application:
+Before setting up the application, make sure you have the following:
 
 - **Node.js** (version 14 or higher)
 - **npm** or **yarn**
-- A local instance of the [Car Listings API](https://github.com/your-username/car-listings-api)
+- **Puppeteer** installed for scraping car listings (this is done in the backend).
 
-## Setup
+You will also need to have the scraping backend set up.
 
-1. Clone the repository to your local machine:
+## Backend Setup
+
+To get started with scraping, you'll need the backend, which uses **Puppeteer** to scrape car listings from **Mekina.net** and **Jiji.com.et**.
+
+1. Clone the **Car Listings Scraper API** repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/car-listings-app.git
-   cd car-listings-app
+   git clone https://github.com/leul8/Car-Finder-For-Ethiopia.git
+   cd car-listings-scraper-api
+
