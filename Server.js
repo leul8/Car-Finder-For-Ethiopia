@@ -33,10 +33,29 @@ async function fetchCarsFromMekina(searchQuery) {
     return cars;
 }
 
-// Fetch cars from Jiji (You need to implement scraping logic for Jiji here)
+// Fetch cars from Jiji
 async function fetchCarsFromJiji(searchQuery) {
-    // Similar scraping logic to Mekina should go here
-    return []; // Replace with actual scraping results from Jiji
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const url = `https://jiji.com.et/cars?query=${encodeURIComponent(searchQuery)}`;
+
+    await page.goto(url, { waitUntil: 'networkidle2' });
+
+    const cars = await page.evaluate(() => {
+        const carElements = document.querySelectorAll('.b-list-advert__gallery__item');
+        return Array.from(carElements).map(element => {
+            const title = element.querySelector('.qa-advert-title')?.innerText || '';
+            const price = element.querySelector('.qa-advert-price')?.innerText || '';
+            const link = element.querySelector('a')?.href || '';
+            const image = element.querySelector('img')?.src || '';
+            const location = element.querySelector('.b-list-advert__region__text')?.innerText || '';
+
+            return { title, price, link, location, image };
+        });
+    });
+
+    await browser.close();
+    return cars;
 }
 
 app.get('/api/cars', async (req, res) => {
