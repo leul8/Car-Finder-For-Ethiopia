@@ -29,5 +29,4 @@ To get started with scraping, you'll need the backend, which uses **Puppeteer** 
 
    ```bash
    git clone https://github.com/leul8/Car-Finder-For-Ethiopia.git
-   cd car-listings-scraper-api
-
+   cd Car-Finder-For-Ethiopia
